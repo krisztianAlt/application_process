@@ -94,24 +94,8 @@ def display_table(column_names, table):
     input("\nPress Enter to continue!")
 
 
-def main():
+def working_session(cursor):
     end_of_work = False
-
-    # Create database connection and check it:
-    try:
-        connect_str = "dbname='krisztian' user='krisztian' host='localhost' password='iwillbeaprogrammer'"
-        conn = psycopg2.connect(connect_str)
-        conn.autocommit = True
-        cursor = conn.cursor()
-        cursor.execute("""SELECT * FROM mentors;""")
-        cursor.execute("""SELECT * FROM applicants;""")
-    except Exception as e:
-        print("Invalid dbname, user or password.")
-        print(e)
-        print("Please, repair it!")
-        end_of_work = True
-
-    # Working session:
     while end_of_work is False:
         answer = menu()
         if answer == 10:
@@ -180,6 +164,25 @@ def main():
                 rows = cursor.fetchall()
                 column_names = ["id", "first_name", "last_name", "phone_number", "email", "application_code"]
                 display_table(column_names, rows)
+    print("\nThanks for the great job.\nSee you next time.")
+
+
+def main():
+    # Create database connection and check it:
+    try:
+        connect_str = "dbname='krisztian' user='krisztian' host='localhost' password='iwillbeaprogrammer'"
+        conn = psycopg2.connect(connect_str)
+        conn.autocommit = True
+        cursor = conn.cursor()
+        cursor.execute("""SELECT * FROM mentors;""")
+        cursor.execute("""SELECT * FROM applicants;""")
+    except Exception as e:
+        print("Invalid dbname, user or password.")
+        print(e)
+        print("Please, repair it!")
+        end_of_work = True
+
+    working_session(cursor)
 
 
 if __name__ == '__main__':
