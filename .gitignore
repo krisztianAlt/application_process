@@ -99,3 +99,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.idea/*
+.vscode/*
+__pycache__/*
+*.iml
