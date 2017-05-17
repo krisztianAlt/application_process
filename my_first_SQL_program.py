@@ -176,13 +176,13 @@ def main():
         cursor = conn.cursor()
         cursor.execute("""SELECT * FROM mentors;""")
         cursor.execute("""SELECT * FROM applicants;""")
+        # If the two tables are allright:
+        working_session(cursor)
     except Exception as e:
         print("Invalid dbname, user or password.")
         print(e)
         print("Please, repair it!")
         end_of_work = True
-
-    working_session(cursor)
 
 
 if __name__ == '__main__':
