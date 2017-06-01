@@ -79,3 +79,11 @@ def applicants():
                         INNER JOIN applicants_mentors am ON a.id=am.applicant_id
                         WHERE am.creation_date>'2016-01-01'
                         ORDER BY am.creation_date DESC;""")
+
+
+def applicants_and_mentors():
+    return query_result("""SELECT a.first_name, a.application_code, am.mentor_id, m.first_name, m.last_name
+                        FROM applicants a
+                        LEFT JOIN applicants_mentors am ON a.id=am.applicant_id
+                        LEFT JOIN mentors m ON am.mentor_id=m.id
+                        ORDER BY a.id;""")

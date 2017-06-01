@@ -51,5 +51,16 @@ def applicants():
     return render_template("table.html", table=table, column_names=column_names)
 
 
+# Applicants and mentors page
+@app.route('/applicants-and-mentors', methods=['POST', 'GET'])
+def applicants_and_mentors():
+    table = data_manager.applicants_and_mentors()
+    column_names = ["Applicant\'s first name",
+                    "Applicant\'s application code",
+                    "Mentor\'s first name",
+                    "Mentor\'s last name"]
+    return render_template("table.html", table=table, column_names=column_names)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
