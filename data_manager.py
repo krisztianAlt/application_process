@@ -50,3 +50,9 @@ def mentors_and_schools():
                         INNER JOIN schools ON mentors.city=schools.city
                         ORDER BY mentors.id;""")
 
+
+def all_school():
+    return query_result("""SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                        FROM mentors
+                        RIGHT JOIN schools ON mentors.city=schools.city
+                        ORDER BY mentors.id;""")
