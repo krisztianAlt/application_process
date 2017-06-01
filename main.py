@@ -43,6 +43,13 @@ def contacts():
     return render_template("table.html", table=table, column_names=column_names)
 
 
+# Applicants page
+@app.route('/applicants', methods=['POST', 'GET'])
+def applicants():
+    table = data_manager.applicants()
+    column_names = ["First name", "Application code", "Creation date"]
+    return render_template("table.html", table=table, column_names=column_names)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

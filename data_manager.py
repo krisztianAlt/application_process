@@ -72,3 +72,10 @@ def contacts():
                         INNER JOIN mentors ON schools.contact_person=mentors.id
                         ORDER BY schools.name;""")
 
+
+def applicants():
+    return query_result("""SELECT a.first_name, a.application_code, am.creation_date
+                        FROM applicants a
+                        INNER JOIN applicants_mentors am ON a.id=am.applicant_id
+                        WHERE am.creation_date>'2016-01-01'
+                        ORDER BY am.creation_date DESC;""")
