@@ -27,5 +27,22 @@ def all_school():
     return render_template("table.html", table=table, column_names=column_names)
 
 
+# Mentors per country
+@app.route('/mentors-by-country', methods=['POST', 'GET'])
+def mentors_by_country():
+    table = data_manager.mentors_by_country()
+    column_names = ['Country', 'Count']
+    return render_template("table.html", table=table, column_names=column_names)
+
+
+# Contacts page
+@app.route('/contacts', methods=['POST', 'GET'])
+def contacts():
+    table = data_manager.contacts()
+    column_names = ['School\'s Name', 'Mentor\'s First Name', 'Mentor\'s Last Name']
+    return render_template("table.html", table=table, column_names=column_names)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

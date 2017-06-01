@@ -56,3 +56,19 @@ def all_school():
                         FROM mentors
                         RIGHT JOIN schools ON mentors.city=schools.city
                         ORDER BY mentors.id;""")
+
+
+def mentors_by_country():
+    return query_result("""SELECT schools.country, COUNT(mentors.id)
+                        FROM schools
+                        INNER JOIN mentors ON schools.city=mentors.city
+                        GROUP BY schools.country
+                        ORDER BY schools.country ASC;""")
+
+
+def contacts():
+    return query_result("""SELECT schools.name, mentors.first_name, mentors.last_name
+                        FROM schools
+                        INNER JOIN mentors ON schools.contact_person=mentors.id
+                        ORDER BY schools.name;""")
+
