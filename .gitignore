@@ -104,3 +104,6 @@ ENV/
 .vscode/*
 __pycache__/*
 *.iml
+
+# Database file
+*.sql
