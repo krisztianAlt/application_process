@@ -107,3 +107,6 @@ __pycache__/*
 
 # Database file
 *.sql
+
+# Flask
+flask/
