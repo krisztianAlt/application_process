@@ -2,30 +2,31 @@
 <html>
     <head>
         <title>Tables</title>
+        <link rel="stylesheet" type="text/css"  href="/static/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext" media="all">
     </head>
     <body>
-       <h1>Application Process</h1>
-
-       {% if table %}
-       <table border="2">
-           <tr>
-               {% for column_name in column_names %}
-               <th>{{column_name}}</th>
-               {% endfor %}
-           </tr>
-           {% for row in table %}
-           <tr>
-               {% for field in row %}
-               <td>{{field}}</td>
-               {% endfor %}
-           </tr>
-           {% endfor %}
-       </table>
-       
-       {% else %}
-       <p>No result.</p>
-       {% endif %}
-
-       <p><a href="/">Back to the main page</a></p>        
+        <h1>Application Process</h1>
+        <br>
+        {% if table %}
+        <table class=center>
+            <tr>
+                {% for column_name in column_names %}
+                <th>{{column_name}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in table %}
+            <tr>
+                {% for field in row %}
+                <td>{{field}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    
+        {% else %}
+        <p>No result.</p>
+        {% endif %}
+        <p><a href="/">Back to the main page</a></p>        
     </body>
 </html>

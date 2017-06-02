@@ -82,7 +82,7 @@ def applicants():
 
 
 def applicants_and_mentors():
-    return query_result("""SELECT a.first_name, a.application_code, am.mentor_id, m.first_name, m.last_name
+    return query_result("""SELECT a.first_name, a.application_code, m.first_name, m.last_name
                         FROM applicants a
                         LEFT JOIN applicants_mentors am ON a.id=am.applicant_id
                         LEFT JOIN mentors m ON am.mentor_id=m.id
