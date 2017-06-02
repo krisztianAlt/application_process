@@ -74,5 +74,13 @@ def applicants_and_schools():
     return render_template("table.html", table=table, column_names=column_names)
 
 
+# Applicants per schools page
+@app.route('/applicants-per-schools', methods=['POST', 'GET'])
+def applicants_per_schools():
+    table = data_manager.applicants_per_schools()
+    column_names = ["School\'s Name", "Count"]
+    return render_template("table.html", table=table, column_names=column_names)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

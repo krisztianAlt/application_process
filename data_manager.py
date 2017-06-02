@@ -96,3 +96,13 @@ def applicants_and_schools():
                         INNER JOIN mentors AS m ON am.mentor_id=m.id
                         INNER JOIN schools AS s ON m.city=s.city
                         ORDER BY a.last_name ASC;""")
+
+
+def applicants_per_schools():
+    return query_result("""SELECT s.name, COUNT(a.id)
+                        FROM applicants AS a
+                        RIGHT JOIN applicants_mentors AS am ON a.id=am.applicant_id
+                        RIGHT JOIN mentors AS m ON am.mentor_id=m.id
+                        RIGHT JOIN schools AS s ON m.city=s.city
+                        GROUP BY s.name
+                        ORDER BY s.name ASC;""")
