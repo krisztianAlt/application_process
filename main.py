@@ -62,5 +62,17 @@ def applicants_and_mentors():
     return render_template("table.html", table=table, column_names=column_names)
 
 
+# Applicants and schools page
+@app.route('/applicants-and-schools', methods=['POST', 'GET'])
+def applicants_and_schools():
+    table = data_manager.applicants_and_schools()
+    column_names = ["Applicant\'s first name",
+                    "Applicant\'s last name",
+                    "School\'s Name",
+                    "City",
+                    "Country"]
+    return render_template("table.html", table=table, column_names=column_names)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

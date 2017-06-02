@@ -87,3 +87,12 @@ def applicants_and_mentors():
                         LEFT JOIN applicants_mentors am ON a.id=am.applicant_id
                         LEFT JOIN mentors m ON am.mentor_id=m.id
                         ORDER BY a.id;""")
+
+
+def applicants_and_schools():
+    return query_result("""SELECT a.first_name, a.last_name, s.name, s.city, s.country
+                        FROM applicants AS a
+                        INNER JOIN applicants_mentors AS am ON a.id=am.applicant_id
+                        INNER JOIN mentors AS m ON am.mentor_id=m.id
+                        INNER JOIN schools AS s ON m.city=s.city
+                        ORDER BY a.last_name ASC;""")
